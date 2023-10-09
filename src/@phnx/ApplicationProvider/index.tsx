@@ -1,17 +1,11 @@
 // create global application provide
 import React, { useContext } from 'react';
 import { createCtx } from './createCtx';
-import type {ApplicationContext } from './types';
+import { useIntl } from 'react-intl';
+// import type {ApplicationContext } from './types';
 // import applicationContext from "./createCtx";
 
-
-const initialContext: ApplicationContext = {
-    locale: 'locale_context',
-    dateLocale: 'locale_dateLocale',
-    timezone: 'locale_timezone'
-};
-
-const [ctx, Provider] = createCtx<ApplicationContext>(initialContext);
+const [ctx, Provider] = createCtx();
 
 
 // expose context outside
@@ -20,12 +14,28 @@ const [ctx, Provider] = createCtx<ApplicationContext>(initialContext);
 export const useApplicationContext = () => {
     const context = useContext(ctx);
 
-    function updateTimezone(tz: string) {
-        context.update({ ...context.state, timezone: tz });
+    const {
+        locale,
+        defaultLocale,
+        timeZone,
+    } = useIntl();
+
+    if(!context.state) {
+        throw new Error('ApplicationProvider is not ');
     }
 
+    // function updateTimezone(tz: string) {
+    //     // context.dispatch({ locale: context.state?.locale || 'en', dateLocale: 'tttt', timezone: tz });
+    //     context.dispatch({ type: 'tz', payload: tz});
+    // }
+
+    const updateTimezone = (tz: string) => context.dispatch({ type: 'tz', payload: tz});
+
     return {
-        ...context.state,
+        // ...context.state,
+        locale,
+        defaultLocale,
+        timezone: timeZone,
         updateTimezone
     };
 };

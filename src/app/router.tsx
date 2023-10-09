@@ -8,14 +8,14 @@ import ExamplePage from '../Pages/ExamplePage';
 type fn = (router: RouteObject[]) => Router;
 
 const createApplicationRouter: fn = (r) => {
-	return createBrowserRouter(router);
+    return createBrowserRouter(router);
 };
 
 const router: RouteObject[] = [
-	{
-		path: '/',
-		element: <ExamplePage />,
-	},
+    {
+        path: '/',
+        element: <ExamplePage />,
+    },
 ];
 
 export default createApplicationRouter(router);

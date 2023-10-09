@@ -1,0 +1,13 @@
+{
+  "system.language": "Русский",
+
+  "button.cancel": "Отмена",
+  "button.ok": "Сойдёт",
+
+  "greeting": "Привет {name}! Как дела?",
+
+  "widget.intl.greeting": "Демо языкового виджета",
+  "widget.intl.locale": "Текуший язык",
+  "widget.intl.timezone": "Текущая временная зона",
+  "widget.intl.defaultLocale": "Языв приложения по умолчанию"
+}
